@@ -1,7 +1,7 @@
 export async function apiPostNoticeWrite(formData){
   try{
     // console.log("API",formData);
-    return await fetch("http://localhost:4000/notice/write",{
+    return await fetch("https://port-0-express-server2-dc9c2nlsjoqu5a.sel5.cloudtype.app/notice/write",{
       method:"POST",
       headers:{
         "Content-Type":"application/json"
