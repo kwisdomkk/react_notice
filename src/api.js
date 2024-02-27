@@ -1,5 +1,16 @@
 const BASE_URL=process.env.REACT_APP_BASE_URL;
 
+// 글 목록 불러오기
+export async function apiGetNoticeList(){
+  try{
+    return await fetch(`${BASE_URL}/notice`).then((res)=>res.json());
+  }catch(e){
+    console.log(e)
+  }
+}
+
+
+// 글 작성하기
 export async function apiPostNoticeWrite(formData){
   try{
     // console.log("API",formData);
