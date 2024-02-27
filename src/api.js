@@ -35,3 +35,4 @@ export async function apiPostNoticeWrite(formData){
     console.log(error);
   }
 }
+
