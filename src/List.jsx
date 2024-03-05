@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import { apiGetNoticeList } from "./api";
 import { Link } from "react-router-dom";
+import { timeFormat } from "./timeFormat";
 
 export default function List() {
 		const {data} = useQuery("getList",apiGetNoticeList);
@@ -18,7 +19,7 @@ export default function List() {
 							<div>{item.title}</div>
 							<div>{item.description}</div>
 							<div>{item.writer}</div>
-							<div>{item.createdAt.substr(0,10)}</div>
+							<div>{timeFormat(item.createdAt)}</div>
 						</div>
 					))}
 				</div>
