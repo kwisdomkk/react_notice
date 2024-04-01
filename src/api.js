@@ -1,4 +1,5 @@
 const BASE_URL=process.env.REACT_APP_BASE_URL;
+
 // 글 자세히 보기
 
 export async function apiGetNoticeDetail(props){
@@ -62,6 +63,74 @@ export async function apiPostNoticeDelete(id){
       },
     }).then(res=>res.json())
   }catch(error){
+    console.log(error);
+  }
+}
+
+// 회원가입하기
+export async function apiPostRegister(data) {
+  console.log(data);
+  try{
+    return await fetch(`${BASE_URL}/users/register`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify(data),
+    }).then(res=>res.json());
+  } catch(error){
+    console.log(error);
+  }
+}
+
+//로그인하기
+export async function apiPostLogin(data){
+  try{
+    return await fetch(`${BASE_URL}/users/login`,{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      credentials:"include",
+      body:JSON.stringify(data),
+    }).then(res=>res.json());
+  }catch(error){
+    console.log(error);
+  }
+}
+
+// 로그인 후 userData 요청
+export async function apiGetUser() {
+  try{
+    return await fetch(`${BASE_URL}/users/login-success`,{
+      method:"GET",
+      credentials:"include",
+    }).then((res)=>res.json());
+  }catch(error){
+    console.log(error);
+  }
+}
+
+export async function apiPostLogout(){
+  try{
+    return await fetch(`${BASE_URL}/users/logout`,{
+      method:"POST",
+      credentials:"include",
+    }).then((res)=>res.json());
+  }catch(error){
+    console.log(error);
+  }
+}
+
+// 카카오 로그인 code 전달
+export async function apiKakaoLogin(props) {
+  const { code } = props.queryKey[1];
+  try {
+    return await fetch(`${BASE_URL}/users/socials/kakao?code=${code}`, {
+      method: "GET",
+      credentials: "include",
+    }).then((res) => res.json());
+  } catch (error) {
     console.log(error);
   }
 }
